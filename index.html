@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 中華牙醫學會大會學術研討會｜全體講師推薦指南</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Microsoft JhengHei', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#035485',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for better UI */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="h-full text-slate-800 flex flex-col font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white shadow-lg sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-brand-500 text-white p-2.5 rounded-xl shadow-inner">
+                        <img src="TADS2026.jpg" alt="醫師" class="inline-block me-1 h-6 w-6 sm:h-8 sm:w-8 object-contain">
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-brand-500/30 text-brand-200 text-xs px-2 py-0.5 rounded border border-brand-400/30 font-mono">EXPO 2026</span>
+                            <span class="text-xs text-slate-300">2026.11.14 - 11.15  台北世貿中心一館２樓</span>
+                        </div>
+                        <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white">2026 中華牙醫學會大會學術研討會｜全體講師推薦指南</h1>
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center gap-2 self-end md:self-auto">
+                      <a href="https://www.tads.org.tw/events/content.php?id=25" style="color: #00ff00;">前往 中華牙官網 報名</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Banner / Intro -->
+        <div class="bg-white rounded-2xl p-5 sm:p-6 mb-6 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-compass text-brand-600"></i>
+                    課程與講師探索平台
+                </h2>
+                <p class="text-sm text-slate-600 mt-1">
+                    歡迎透過下方分類選單選擇日期、會議室、課程單元或搜尋關鍵字，快速預閱與精準篩選 2026 年大會學術精彩課程推薦資訊。
+                </p>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-slate-500 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200 shrink-0">
+                <span><strong id="stat-count" class="text-brand-600 text-base font-bold">0</strong> 門課程</span>
+                <span class="text-slate-300">|</span>
+                <span><strong id="stat-speakers" class="text-slate-700 text-base font-bold">0</strong> 位專家講師</span>
+            </div>
+        </div>
+
+        <!-- Filter Controls Box -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 mb-8 space-y-4">
+            
+            <!-- Global Search & Reset Row -->
+            <div class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" oninput="applyFilters()" placeholder="搜尋講師姓名、講題關鍵字、專長領域或教室..." 
+                        class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition">
+                </div>
+                <button onclick="resetFilters()" class="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2.5 rounded-xl text-sm font-medium transition shrink-0">
+                    <i class="fa-solid fa-rotate-left text-xs"></i>
+                    <span>清除重置篩選</span>
+                </button>
+            </div>
+
+            <!-- Category Filters Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2 border-t border-slate-100">
+                
+                <!-- Date Filter -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1.5 flex items-center gap-1.5">
+                        <i class="fa-regular fa-calendar text-brand-600"></i> 日期 (Date)
+                    </label>
+                    <select id="filterDate" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500">
+                        <option value="">全部日期 (All Dates)</option>
+                        <option value="2026年11月14日">2026年11月14日 (Day 1)</option>
+                        <option value="2026年11月15日">2026年11月15日 (Day 2)</option>
+                    </select>
+                </div>
+
+                <!-- Room Filter -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1.5 flex items-center gap-1.5">
+                        <i class="fa-solid fa-door-open text-brand-600"></i> 教室/會議室 (Room)
+                    </label>
+                    <select id="filterRoom" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500">
+                        <option value="">全部教室 (All Rooms)</option>
+                        <option value="A1 第一會議室">A1 第一會議室</option>
+                        <option value="A3 第三會議室">A3 第三會議室</option>
+                        <option value="A4 第四會議室">A4 第四會議室</option>
+                        <option value="A5 第五會議室">A5 第五會議室</option>
+                        <option value="Room 201">Room 201 (International)</option>
+                    </select>
+                </div>
+
+                <!-- Special Tag/Category Filter -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1.5 flex items-center gap-1.5">
+                        <i class="fa-solid fa-tags text-brand-600"></i> 課程單元/類別
+                    </label>
+                    <select id="filterTag" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500">
+                        <option value="">全部單元 (All Types)</option>
+                        <option value="Keynote">Keynote 國際重磅</option>
+                        <option value="AI">AI 人工智慧應用</option>
+                        <option value="PRO">國內學術菁英</option>
+                        <option value="專業品質">專業品質／法規／倫理</option>
+                        <option value="教育論壇">牙醫教育論壇</option>
+                    </select>
+                </div>
+
+                <!-- Speaker Quick Select -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1.5 flex items-center gap-1.5">
+                        <i class="fa-solid fa-user-doctor text-brand-600"></i> 快速選擇講師 (Speaker)
+                    </label>
+                    <select id="filterSpeaker" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500">
+                        <option value="">全部講師 (All Speakers)</option>
+                        <!-- Dynamic options generated by JS -->
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Course Cards List Container -->
+        <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards populated dynamically via JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 p-8">
+            <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3"></i>
+            <h3 class="text-base font-bold text-slate-700">未找到符合條件的課程</h3>
+            <p class="text-xs text-slate-500 mt-1">請嘗試調整搜尋關鍵字或重置篩選條件。</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-brand-600 text-white rounded-lg text-xs font-medium hover:bg-brand-500 transition">
+                重置所有篩選
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <p class="font-medium text-slate-300">2026 中華牙醫學會大會課程資料庫指南</p>
+                <p class="text-slate-500 mt-0.5">資料供參考，正式文件請依學會最終發布為準。</p>
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="https://wuwugongfu-boop.github.io/dental-expo-2026-rules/" target="_blank" class="hover:text-white transition flex items-center gap-1">
+                    <span>原始參考網站</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Detail Modal -->
+    <div id="detailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden transform transition-all">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-slate-900 text-white flex justify-between items-center border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                    <span id="modalDateTag" class="bg-brand-500 text-white text-xs px-2.5 py-0.5 rounded-full font-medium"></span>
+                    <span id="modalRoomTag" class="bg-slate-700 text-slate-200 text-xs px-2.5 py-0.5 rounded-full"></span>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white transition p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Body (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-5 text-sm">
+                <div>
+                    <h3 id="modalSpeaker" class="text-lg font-bold text-brand-600"></h3>
+                    <p id="modalTopic" class="text-base font-semibold text-slate-900 mt-1 leading-snug"></p>
+                </div>
+
+                <div class="border-t border-slate-100 pt-3">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-id-card text-brand-500"></i> 專業背景
+                    </h4>
+                    <p id="modalBackground" class="text-slate-700 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-100"></p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-thumbs-up text-amber-500"></i> 推薦理由
+                    </h4>
+                    <p id="modalReason" class="text-slate-700 leading-relaxed bg-amber-50/50 p-3 rounded-xl border border-amber-100/60"></p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-brand-500"></i> 預期演講特色
+                    </h4>
+                    <p id="modalFeature" class="text-slate-700 leading-relaxed bg-brand-50/40 p-3 rounded-xl border border-brand-100/60"></p>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex justify-between items-center">
+                <button id="modalCopyBtn" onclick="" class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-300 hover:bg-slate-100 px-3.5 py-2 rounded-lg transition">
+                    <i class="fa-regular fa-copy"></i>
+                    <span>複製本篇資訊</span>
+                </button>
+                <button onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium rounded-lg transition">
+                    關閉
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 z-50 translate-y-20 opacity-0 transition-all duration-300 border border-slate-700">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toastMsg" class="text-xs font-medium">複製成功！</span>
+    </div>
+
+    <!-- Embedded Speakers & Courses Data JS -->
+    <script>
+        const coursesData = [
+            // 2026年11月14日｜A1 第一會議室
+            {
+                id: 1,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "張極青醫師",
+                topic: "牙周再生的過去，現在，有沒有未來？ Periodontal Regeneration: Past, Present, and an Uncertain Future?",
+                background: "現任台北長庚紀念醫院牙周病科主治醫師，臺灣牙周病醫學會可查之牙周病專科醫師。長庚公開資料列其臨床專長包括牙周病治療、人工植牙、牙周再生手術、牙周美容手術與牙冠增長術，具長期處理軟硬組織再生及植牙相關病例之臨床基礎。",
+                reason: "本題不是單純介紹某一種再生材料或術式，而是要回顧牙周再生的發展、釐清目前可預測的適應症，並討論未來仍待突破之限制。張醫師長期執行牙周再生、植牙及美學牙周手術，能以大量臨床經驗對照研究證據，特別適合處理「技術進步後，哪些原則其實沒有改變」這類具臨床判斷性的主題。",
+                feature: "預期可由經典再生觀念一路談到現代微創、材料與生物學策略，並以病例比較成功條件與失敗因素。特色在於兼具歷史縱深與臨床可操作性，可協助參與者形成「病例選擇—缺損型態—材料／術式—長期維護」的整體思考。",
+                tags: ["PRO", "牙周病", "組織再生"]
+            },
+            {
+                id: 2,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "張博鈞教授",
+                topic: "建構以人工智能輔助之牙周與牙科植體治療決策模式 Development of an AI-Integrated Decision-Making Paradigm for Periodontal and Dental Implant Therapy",
+                background: "國立臺灣大學牙醫專業學院教授、臨床牙醫學研究所所長。臺大公開師資資料列其專長為牙周病學與組織工程學，長期從事牙周、植體及再生相關研究與教學，具臨床專科與研究方法整合之背景。",
+                reason: "人工智慧在牙周與植體領域的真正價值，並非只做影像辨識，而是如何整合病人風險、牙周狀態、骨條件、植體位置與治療預後來輔助臨床決策。張教授同時具牙周臨床、組織工程與學術研究背景，能從臨床問題出發，討論AI模型應如何建立、驗證與導入，而不是停留於技術展示。",
+                feature: "演講可望聚焦「AI 如何成為第二層決策支援」：從資料品質、特徵選擇、模型解釋性到臨床驗證，並討論AI與醫師責任的分界。對準備投入臨床AI研究或希望將AI導入牙周／植體流程的聽眾，具有方法學與實務雙重價值。",
+                tags: ["PRO", "AI", "植體治療", "牙周病"]
+            },
+            {
+                id: 3,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "何易助理教授／醫師",
+                topic: "開啟口腔重建新視野－數位工具臨床應用 New Horizons in Oral Rehabilitation—Working with Digital Dental Tools",
+                background: "國立臺灣大學牙醫學系助理教授，臺大公開資料列專長為細胞生物學、補綴學；具臨床牙醫學碩、博士學位，並具有贋復牙科及口腔植體專科資格。研究亦涉及鈦植體表面與成骨細胞反應，兼具補綴、植體與基礎研究背景。",
+                reason: "口腔重建是最能檢驗數位工具整合能力的領域之一，從資料擷取、咬合記錄、虛擬設計、植牙規劃到最終贋復，都需要兼顧精準度、生物學與長期維護。何醫師兼具補綴與植體專業，適合由「重建結果」反推各種數位工具的真正價值與限制。",
+                feature: "預期以臨床工作流為主軸，呈現掃描、設計、製造與植體治療如何串連，並討論哪些環節可由數位化提升效率與溝通、哪些仍仰賴醫師的診斷與咬合判斷。對希望從單點設備升級為完整數位重建流程者特別有參考性。",
+                tags: ["AI", "數位牙科", "口腔重建"]
+            },
+            {
+                id: 4,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "沈峻民醫師",
+                topic: "活動義齒的數位革命：從傳統印模到高效數位工作流 The Digital Revolution in Removable Dentures: From Conventional Impressions to Efficient Workflows",
+                background: "衛生福利部醫事人員公開查詢列其具贋復補綴牙科專科資格。其專業訓練與本場活動義齒、全口贋復及數位工作流主題直接相關，適合由補綴專科角度評估數位流程的臨床成熟度。",
+                reason: "活動義齒的數位化比固定贋復更具挑戰，因為無牙區黏膜、邊緣塑形、支持與穩定、顎間關係等資料不一定能完全以單一掃描步驟取得。因此需要由熟悉傳統活動義齒原理的補綴專科醫師，判斷數位化真正能取代什麼、不能取代什麼。",
+                feature: "演講可望將傳統印模與數位掃描逐步比較，討論適應症、掃描策略、設計製造及重製流程，並指出目前仍需傳統技巧補強之處。其特色是將「數位革命」落實為可直接改變門診效率與病人就診次數的工作流。",
+                tags: ["AI", "活動義齒", "數位工作流"]
+            },
+            {
+                id: 5,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "陳偉勵醫師",
+                topic: "生物陶瓷時代的牙髓病學：從不可能到可能 Endodontics in the Bioceramic Era — From Impossible to Possible",
+                background: "中華民國牙髓病學會專科醫師名錄列為牙髓病專科醫師，現於屏東榮民總醫院執業。具牙髓病專業訓練，臨床核心聚焦自然牙保存、根管治療與相關牙髓／根尖病灶處置。",
+                reason: "生物陶瓷材料已明顯改變活髓治療、穿孔修補、根尖屏障、逆充填與部分複雜病例的治療策略。此類主題若只介紹材料特性容易流於產品化，需由牙髓專科醫師將材料、病例選擇、操作細節與長期預後連結，才能真正回答「哪些過去困難的病例現在變得可行」。",
+                feature: "可期待以病例導向說明生物陶瓷材料的適應症、操作條件、成功關鍵與常見誤區，並將新材料置於既有感染控制與生物學原則之下評估。特色是把材料進步轉化為臨床決策，而非把新材料等同於無限制的新適應症。",
+                tags: ["牙髓病學", "生物陶瓷"]
+            },
+            {
+                id: 6,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "鄭陳陽醫師",
+                topic: "當AI遇上Endo－臨床應用與未來展望 Artificial Intelligence in Endodontics: Where Are We Now and Where Are We Going?",
+                background: "牙髓病專科醫師，曾任臺北榮民總醫院牙髓病科主治醫師；公開資料列其具顯微根管治療、根尖周圍手術、牙髓再生與活髓治療等臨床經驗。其專業背景能直接對應AI在影像判讀、根管解剖與預後評估等牙髓應用。",
+                reason: "AI在牙髓病學最具潛力的場景包含根尖病灶辨識、CBCT解剖分析、根管形態辨識與預後輔助，但臨床上同時面臨資料偏差、偽陽性與過度依賴等問題。由具顯微牙髓臨床經驗的專科醫師主講，可把AI模型表現轉換成實際可接受的臨床風險。",
+                feature: "演講特色預期是由真實Endo工作流程出發，區分「AI已可使用、可輔助、仍屬研究」三個層級，並討論CBCT、顯微治療與AI之間的互補關係。可協助臨床醫師建立合理期待，不把AI視為取代專科判斷的黑盒子。",
+                tags: ["AI", "牙髓病學"]
+            },
+            {
+                id: 7,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "陳建霖醫師",
+                topic: "AI時代矯正治療之反思過去暨展望未來 From Reflection to Transformation: Orthodontics in the Age of AI",
+                background: "中華民國齒顎矯正學會專科會員，具齒顎矯正專業訓練與臨床執業背景。專業核心為矯正診斷、治療規劃與長期咬合控制，適合由傳統矯正原理出發檢視AI與自動化設計的臨床影響。",
+                reason: "矯正是AI與數位化導入速度最快的牙科領域之一，但演算法產生的治療模擬並不等同於真實牙齒移動。講者具矯正專科背景，可從生物力學、支抗、牙周條件及病人依從性等角度，檢視AI建議是否真正可執行，避免將軟體模擬誤認為治療結果。",
+                feature: "本場可由傳統矯正診斷邏輯一路比較數位模型、自動排牙、透明牙套與AI決策，強調「工具改變、基本原理不變」。特色在於兼具反思與前瞻：既不否定AI，也不忽略專科醫師對風險、限制與治療目標的最終責任。",
+                tags: ["AI", "齒顎矯正"]
+            },
+            {
+                id: 8,
+                date: "2026年11月14日",
+                room: "A1 第一會議室",
+                speaker: "吳姿瑩主任／醫師",
+                topic: "矯正醫師的數位世界 Digital Era for Orthodontics",
+                background: "現任臺北榮民總醫院口腔醫學部齒顎矯正科主任，具國立陽明交通大學牙醫學博士背景，並曾赴德國大學醫院齒顎矯正與口腔顎面外科臨床研究；為衛福部部定齒顎矯正專科醫師及指導醫師。",
+                reason: "數位矯正不只包含透明牙套，還涉及數位模型、CBCT整合、虛擬治療規劃、客製化裝置及正顎手術跨科協作。吳主任同時具成人／兒童矯正與合併正顎手術經驗，能從大型醫學中心複雜病例角度，呈現數位工具在不同難度病例中的真實價值。",
+                feature: "預期可把「矯正醫師的數位世界」整理成一條連續工作流：資料取得、分析、設計、治療、追蹤與品質控制。特色是兼顧日常矯正與正顎等高複雜度病例，讓參與者看到數位工具如何提升跨專科溝通與治療可預測性。",
+                tags: ["AI", "數位矯正", "正顎手術"]
+            },
+
+            // 2026年11月14日｜A3 第三會議室
+            {
+                id: 9,
+                date: "2026年11月14日",
+                room: "A3 第三會議室",
+                speaker: "蘇映輝醫師",
+                topic: "橫跨傳統、數位與AI浪潮：始終如一的自然牙保存思維 Across the Waves of Tradition, Digital, and AI: The Unchanging Paradigm of Natural Tooth Preservation",
+                background: "長期投入牙體復形與牙髓相關臨床及教學，公開教學內容可見其持續進行牙體復形與自然牙保存教育。專業取向橫跨牙體復形、牙髓治療與保存性牙科，與本場「自然牙保存」核心高度一致。",
+                reason: "在植牙、數位與AI快速發展的環境下，自然牙保存最容易受到「新技術等於較佳治療」的錯覺影響。本題需要由熟悉牙體復形與牙髓生物學的臨床醫師，重新強調診斷、感染控制、剩餘齒質、可修復性與病人風險等基本判斷。",
+                feature: "特色是以「不變的保存思維」串起傳統、數位與AI，將科技定位為提升診斷與執行品質的工具，而非治療目的。預期可透過病例呈現何時應積極保存、何時應承認預後限制，對臨床決策與病人溝通都有直接價值。",
+                tags: ["自然牙保存", "AI", "牙體復形"]
+            },
+            {
+                id: 10,
+                date: "2026年11月14日",
+                room: "A3 第三會議室",
+                speaker: "林彥宏主任／醫師",
+                topic: "從經驗導向到智慧導航：導航與數位科技如何改變口腔顎面外科手術決策 From Experience-Based Surgery to Intelligent Navigation: How Digital Technology Is Transforming Oral and Maxillofacial Surgery",
+                background: "現任林口長庚醫院口腔外科科主任，中華民國口腔顎面外科專科醫師。長庚公開資料列其臨床專長涵蓋人工植牙與骨增量、正顎手術、顏面骨折、頭頸部腫瘤、感染與顳顎關節手術等，具有複雜口腔顎面外科手術經驗。",
+                reason: "導航與數位科技在口腔顎面外科的價值不只是「把位置做得更準」，而是協助術前風險辨識、空間規劃、術中定位與術後驗證。林主任處理的病例範圍橫跨植牙、正顎、外傷與重建，能比較不同手術中導航真正改善決策的環節及其限制。",
+                feature: "預期以複雜病例為主軸，說明CBCT／3D模型／導引或導航如何由術前計畫轉化為術中資訊，並討論定位誤差、registration、學習曲線與備援方案。特色在於不只談精準度數字，而是談數位資訊如何改變外科醫師的決策路徑。",
+                tags: ["AI", "智慧導航", "口腔外科"]
+            },
+            {
+                id: 11,
+                date: "2026年11月14日",
+                room: "A3 第三會議室",
+                speaker: "林鴻穎助理教授／醫師",
+                topic: "虛擬手術規劃對口腔及顎顏面重建之幫助 Virtual Surgical Planning in Oral and Maxillofacial Reconstruction: Enhancing Accuracy and Predictability",
+                background: "臺大醫院口腔醫學部口腔顎面外科主治醫師、臺大醫學院助理教授，具臺大臨床牙醫學研究所博士背景。臺大公開資料列其專科為口腔顎面外科，門診亦包含口腔顎顏面手術及困難植牙。",
+                reason: "顎顏面重建同時牽涉骨段位置、咬合、顏面對稱、植體或固定裝置位置與後續功能，僅靠術中目測很難完整兼顧。林醫師具外科與重建背景，適合說明VSP如何把空間規劃前移至術前，並讓外科、贋復與工程團隊在手術前即共享同一治療目標。",
+                feature: "演講可望呈現從影像分割、虛擬截骨、重建設計到導板／定位工具製作的完整流程，並以病例比較傳統與VSP的差異。特色在於強調「可預測性」而非只強調科技感，亦可討論VSP與實際術中軟組織、解剖差異的落差。",
+                tags: ["AI", "虛擬手術規劃", "顎顏面重建"]
+            },
+
+            // 2026年11月14日｜A4 第四會議室
+            {
+                id: 12,
+                date: "2026年11月14日",
+                room: "A4 第四會議室",
+                speaker: "黃冠凱助理教授／博士",
+                topic: "人力吃緊下的牙醫智慧解方：生成式AI與數位轉型實務 Smart Dentistry Under Staffing Pressure: Practical Applications of Generative AI and Digital Transformation",
+                background: "公開資料顯示為中山醫學大學專案助理教授、中山醫學大學附設醫院醫療資訊中心副主任，資訊工程博士；專長包括智慧醫療、醫院資訊管理、電子病歷規劃、服務品質改善與數位轉型策略。",
+                reason: "牙科人力壓力涉及的不只是臨床人力，更包括病歷書寫、行政作業、預約客服、資料整理與內部知識管理。黃冠凱的專業核心正是醫療資訊與流程數位轉型，能從系統面判斷生成式AI適合處理哪些任務、哪些任務牽涉醫療責任或個資風險而不宜直接自動化。",
+                feature: "預期特色為高度實務導向，可從醫療院所流程切入示範生成式AI、電子病歷與自動化工具的導入方式，同時討論個資、資安、權限與人工覆核。對診所經營者及醫院管理者而言，可提供「從小處開始、逐步治理」的數位轉型框架。",
+                tags: ["AI", "生成式AI", "診所管理"]
+            },
+            {
+                id: 13,
+                date: "2026年11月14日",
+                room: "A4 第四會議室",
+                speaker: "陳信銘副教授／醫師",
+                topic: "人工智慧於特殊需求者牙科之應用：診斷、行為與輔助創新之全面分析 Artificial Intelligence in Special Care Dentistry: A Comprehensive Analysis of Diagnostic, Behavioral, and Assistive Innovations",
+                background: "臺大醫院口腔醫學部口腔顎面外科主治醫師、臺大醫院特殊需求者牙科醫療服務示範中心主任、臺大醫學院副教授。臺大公開資料列其專長包括特殊照護牙醫學、牙科公共衛生、口腔腫瘤與口腔植體，研究亦涵蓋特殊需求者牙科醫療服務。",
+                reason: "特殊需求者的AI應用不能只看診斷正確率，還要納入溝通、行為反應、照護者參與、鎮靜／麻醉風險、輔具與可近性。陳醫師長期處理特殊需求患者並負責示範中心，能從實際照護流程檢視AI是否真正減輕障礙，而不是增加新的數位排除。",
+                feature: "本場可望將AI分為診斷輔助、行為與風險預測、溝通輔助、照護流程與輔具創新等層次，並討論倫理與資料偏差。特色是以「病人能否因此獲得更平等、更安全的牙科照護」作為評估AI的核心，而非只追求技術表現。",
+                tags: ["AI", "特殊需求牙科"]
+            },
+            {
+                id: 14,
+                date: "2026年11月14日",
+                room: "A4 第四會議室",
+                speaker: "張玉芳教授／理事長",
+                topic: "邁向AI輔助口腔黏膜疾病精準診斷：現況、挑戰與未來發展 Toward AI-assisted Precision Diagnosis of Oral Mucosal Diseases: Current Landscape, Challenges, and Future Directions",
+                background: "國立臺灣大學牙醫學系教授，公開師資資料列其專長為口腔病理學、口腔診斷學、幹細胞生物學與腫瘤生物學；具臺大牙醫背景及美國博士與教研經歷。其口腔病理與診斷專業是評估AI黏膜病變辨識效能的關鍵基礎。",
+                reason: "口腔黏膜疾病外觀高度異質，AI若缺乏病理金標準、標準化影像與完整臨床脈絡，很容易在真實世界產生誤判。由口腔病理與診斷專家主講，可把AI從單純「照片分類」提升到鑑別診斷、是否活檢、何時轉診及病理確認的完整診斷路徑。",
+                feature: "預期將系統性整理AI在口腔黏膜疾病的資料來源、模型效能、外部驗證、可解釋性及偏差問題，並以臨床情境討論如何安全使用。特色在於兼顧病理金標準與臨床決策，能幫助聽眾理解「高準確率」與「可安全臨床使用」之間的差距。",
+                tags: ["AI", "口腔黏膜疾病"]
+            },
+            {
+                id: 15,
+                date: "2026年11月14日",
+                room: "A4 第四會議室",
+                speaker: "曾智皇醫師",
+                topic: "人工智慧輔助偵測口腔鱗狀細胞癌之頸部淋巴結轉移 AI-Assisted Detection of Cervical Lymph Node Metastases in Oral Squamous Cell Carcinoma",
+                background: "高雄醫學大學相關研究資料可見其參與並發表「人工智慧輔助提升口腔鱗狀細胞癌頸部淋巴結轉移之診斷準確性與效率」之研究，與本次演講題目直接對應。具口腔疾病臨床與AI研究成果的轉譯基礎。",
+                reason: "頸部淋巴結轉移直接影響口腔癌分期、手術範圍、輔助治療與預後。此題最需要由真正參與模型研究與臨床病例分析的講師，說明AI在影像判讀中能改善什麼，以及假陰性、假陽性或不同影像條件下的限制。",
+                feature: "本場預期可從已發表研究出發，具體介紹資料集、影像特徵、AI表現及臨床工作效率，再延伸至AI如何成為影像診斷的第二讀者。特色是研究與臨床問題高度一致，能提供比一般概念性AI演講更扎實的轉譯內容。",
+                tags: ["AI", "口腔癌"]
+            },
+
+            // 2026年11月14日｜A5 第五會議室 Keynote
+            {
+                id: 16,
+                date: "2026年11月14日",
+                room: "A5 第五會議室",
+                speaker: "Dr. Rodrigo Neiva, DDS, MS",
+                topic: "Current Standards in the Management of Hard and Soft Tissue Deficiencies I & II (Keynote)",
+                background: "國際知名牙周與植體專家，具 University of Michigan 牙周專科證書與碩士學位；Penn Dental Medicine公開CDE資料列其為牙周病學系 Chair／Clinical Professor。長期從事骨與軟組織增量、植體與牙周治療研究與教育，並具 American Board of Periodontology 等專業資歷。",
+                reason: "植牙治療的長期成功很大程度取決於硬、軟組織條件，而治療選項眾多且證據強度不一。Dr. Neiva長期研究與教授骨增量、軟組織處理及植體治療，可用高層次方式梳理哪些技術已成為current standards、哪些仍需謹慎選擇，與本次國際講題高度契合。",
+                feature: "兩個連續單元可建立由診斷、病例選擇、骨增量、軟組織管理到併發症處理的完整架構。其特色預期在於以證據與長期結果重新檢視材料及技術，而非只展示單一術式，對植體臨床醫師具有高度可轉用性。",
+                tags: ["Keynote", "植牙", "軟硬組織"]
+            },
+
+            // 2026年11月15日｜A1 第一會議室
+            {
+                id: 17,
+                date: "2026年11月15日",
+                room: "A1 第一會議室",
+                speaker: "黃明裕醫師",
+                topic: "數位牙科在特殊需求者牙科的運用經驗分享 Sharing Experiences in the Application of Digital Dentistry in Dentistry for Patients with Special Needs",
+                background: "具特殊需求者口腔醫學科及家庭牙醫科專科資格；公開課程資料列其為陽光牙醫診所院長，曾任特殊需求者口腔醫學科專科相關學會理事長，並具日本東京齒科大學齒科麻醉學博士背景。長期投入身心障礙者、到宅與特殊需求者牙科照護。",
+                reason: "特殊需求者患者常因合作度、姿勢、交通、醫療焦慮或全身狀況而難以接受多次長時間治療，數位掃描與數位製造有機會減少傳統印模與就診次數。黃醫師長期在第一線提供特殊需求照護，最能評估數位工具是否真正降低病人與照護者負擔。",
+                feature: "本場預期以「經驗分享」為核心，重點可放在何種患者適用、如何調整掃描與溝通方式、何時仍需傳統流程，以及失敗或無法完成數位資料取得時的替代方案。特色是從特殊需求者可近性與實務限制出發，而非只展示數位設備。",
+                tags: ["AI", "特殊需求牙科", "數位牙科"]
+            },
+            {
+                id: 18,
+                date: "2026年11月15日",
+                room: "A1 第一會議室",
+                speaker: "范綱信部主任／醫師",
+                topic: "網路行銷與個人形象推廣之數位應用經驗分享 Sharing Experiences in Digital Applications for Online Marketing and Personal Brand Promotion",
+                background: "現任恩主公醫院牙醫部部主任，具臺北醫學大學牙醫學士、口腔贋復學碩士背景，為贋復補綴及植牙相關專科醫師，亦具特殊需求者牙科、到宅牙科與全口重建等臨床經驗，並參與多個牙醫專業團體之學術與行政工作。",
+                reason: "醫療專業的網路形象不同於一般商業品牌，必須同時處理專業可信度、醫療廣告規範、個資與病人案例使用、社群互動及醫療倫理。范主任兼具臨床、醫院管理與專業團體經驗，適合從牙醫師實際需求談數位媒體，而不是純行銷理論。",
+                feature: "預期可從網站、社群、影音、病例內容與個人品牌一致性等面向，分享可執行的做法與常見風險。特色是將「曝光」與「專業信任」並列考量，協助牙醫師建立長期、合規且不過度商業化的數位形象。",
+                tags: ["品牌與行銷", "診所管理"]
+            },
+            {
+                id: 19,
+                date: "2026年11月15日",
+                room: "A1 第一會議室",
+                speaker: "莊麗娟副教授／醫師",
+                topic: "Dental Treatment of Pediatric Sleep Disorder Breathing",
+                background: "長庚紀念醫院兒童牙科主治醫師，曾以同題於睡眠醫學相關學術活動演講；公開講師資料列其研究興趣包括 Pediatric Dentistry、Special Need Dentistry 與 Pediatric Sleep Disorder Breathing，並有兒童阻塞型睡眠呼吸中止症顱顏型態及口腔裝置研究。",
+                reason: "兒童睡眠呼吸障礙牽涉上呼吸道、顱顏生長、咬合、扁桃腺、肌功能與睡眠醫學，牙醫師的重要角色在於早期辨識與跨專業轉介，而非單獨處理所有病例。莊醫師的兒童牙科與睡眠呼吸研究正好可連接生長發育、牙科介入與睡眠醫學。",
+                feature: "可預期由臨床表徵與篩檢警訊切入，再討論顱顏／牙弓特徵、口腔裝置與肌功能等牙科治療選項及其限制。特色是清楚界定「牙科能做什麼、何時需轉介耳鼻喉／睡眠醫療」，有利於建立安全的跨專業照護模式。",
+                tags: ["兒童牙科", "睡眠呼吸病"]
+            },
+            {
+                id: 20,
+                date: "2026年11月15日",
+                room: "A1 第一會議室",
+                speaker: "歐陽黎薇醫師",
+                topic: "AI輔助牙科影像診斷：提升臨床判讀效率與精準度 AI-Assisted Dental Imaging Diagnosis: Enhancing Clinical Accuracy and Diagnostic Efficiency",
+                background: "長庚紀念醫院兒童牙科主治醫師；衛福部公開資料列具兒童牙科與特殊需求者口腔醫學科專科資格。臨床專長包括兒童齲齒治療、全身或舒眠麻醉下治療、重症與身心障礙兒童口腔醫療及兒童牙外傷。",
+                reason: "影像AI的價值需放回臨床場景評估。兒童與特殊需求患者可能因合作度、影像品質或時間壓力而增加判讀難度，因此由具有此類患者照護經驗的講師主講，可更務實地討論AI如何提高效率、何時可能誤判，以及影像品質對模型輸出的影響。",
+                feature: "演講特色可從「臨床使用者」視角比較傳統判讀與AI輔助，示範AI在齲齒、病灶或影像標記上的工作流程，同時強調人工覆核與資料品質。適合建立一般牙醫對影像AI的實際期待與安全使用原則。",
+                tags: ["AI", "兒童牙科", "影像診斷"]
+            },
+            {
+                id: 21,
+                date: "2026年11月15日",
+                room: "A1 第一會議室",
+                speaker: "陳鉉醫師",
+                topic: "Efficient Digital Smile Design with Fully Local AI Augmentation",
+                background: "本次課程主題聚焦數位微笑設計與本地端AI（fully local AI）應用，顯示講師的專業定位橫跨臨床美學牙科、數位設計與AI工具整合。",
+                reason: "Digital Smile Design需要把臉部、牙齒、牙齦與贋復設計整合，而AI可提升影像標記、分割及設計速度；但若資料需上傳雲端，醫療個資與資安又形成新風險。以「fully local AI」為題，可同時回應效率與病人資料保護兩個實務問題。",
+                feature: "預期可示範本地端AI如何協助影像處理、比例分析與設計，同時比較傳統手動流程與AI增強流程的時間與品質差異。特色在於不只談美學效果，也把資料隱私、運算環境與臨床可控性納入數位微笑設計。",
+                tags: ["AI", "微笑設計", "美學牙科"]
+            },
+            {
+                id: 22,
+                date: "2026年11月15日",
+                room: "A1 第一會議室",
+                speaker: "林靖傑醫師",
+                topic: "從掃描到微笑重現：整合全口植牙治療的數位流程 From Scan to Smile: Integrating Digital Workflows in Full Arch Implant Rehabilitation",
+                background: "奇美醫學中心牙醫部贋復補綴牙科主治醫師、佳里奇美醫院牙科主治醫師，並任成功大學牙醫學系兼任授課教師。具贋復補綴及家庭牙科專科資格，公開資料列專長包括植牙贋復、全口重建、數位牙科與數位全口植牙（All-on-X）。",
+                reason: "全口植牙重建的數位化並非單一掃描或導板，而是多筆資料在不同時間點的精準整合；任何誤差都可能影響咬合、臨時贋復體及最終義齒。林醫師的專長直接涵蓋數位全口植牙與贋復，可用實際病例說明如何控制累積誤差。",
+                feature: "預期以scan-to-smile完整病例串起術前掃描、CBCT、植體規劃、即刻臨時贋復、咬合記錄與最終義齒。特色是把數位工具視為一條連續流程，並強調長期清潔、維護與贋復設計，而非只追求手術當日快速完成。",
+                tags: ["AI", "全口植牙", "數位流程"]
+            },
+            {
+                id: 23,
+                date: "2026年11月15日",
+                room: "A1 第一會議室",
+                speaker: "林台揚醫師",
+                topic: "動態導航於人工植牙的應用 Dynamic Navigation in Dental Implantology",
+                background: "臺大醫院牙科部主治醫師，臺大醫院公開資料列其專長包括一般牙科、牙周病、牙周美容與人工植牙；曾完成臺大牙科部及牙周病科住院與總醫師訓練，具牙周與植牙臨床基礎。",
+                reason: "動態導航介於free-hand與static guide之間，能將術前規劃即時轉換成術中位置與角度資訊，但成效高度依賴registration、手眼協調與系統學習曲線。由具牙周與植牙臨床背景的醫師主講，可同時考慮植體位置、軟硬組織及贋復導向需求。",
+                feature: "演講可望比較free-hand、static guide與dynamic navigation的適應症、優缺點與誤差來源，並以臨床病例說明設備準備、校正與手術操作。特色是讓聽眾能判斷「什麼病例值得使用導航」，而不是把導航當成所有植牙的必需品。",
+                tags: ["AI", "動態導航", "人工植牙"]
+            },
+
+            // 2026年11月15日｜A3 第三會議室
+            {
+                id: 24,
+                date: "2026年11月15日",
+                room: "A3 第三會議室",
+                speaker: "鄭景暉教授",
+                topic: "全國牙醫教育特色課程與教學創新論壇（共同講者）",
+                background: "國立臺灣大學牙醫學系教授，臺大公開資料列專長包含牙髓病學、分子生物學；另具牙髓病、牙周病與植牙等跨領域研究與教學經驗。長期參與大學牙醫教育、研究人才培育與臨床教學。",
+                reason: "全國牙醫教育論壇需要超越單一課程技巧，討論基礎知識、臨床能力、研究素養與專業態度如何整合。鄭教授具長期大學教學與研究指導經驗，可從研究型大學與醫學中心角度，討論特色課程如何與核心能力及學生發展連結。",
+                feature: "預期可分享課程設計、跨領域教學、研究導向學習與成效評量等經驗，並在跨校論壇中比較各校做法。特色在於把「創新」落實到可被評估、可持續改進的教學制度，而非只呈現單次活動。",
+                tags: ["教育論壇", "牙醫教育"]
+            },
+            {
+                id: 25,
+                date: "2026年11月15日",
+                room: "A3 第三會議室",
+                speaker: "杜哲光教授",
+                topic: "全國牙醫教育特色課程與教學創新論壇（共同講者）",
+                background: "高雄醫學大學牙醫學系教授，現任／代理口腔醫學院院長並曾任附設醫院牙科部主任、臨床教育訓練部牙醫師訓練室主任及補綴科主任。研究與臨床專長包括補綴學、牙科植體學、牙科材料、家庭牙醫與生物力學。",
+                reason: "杜教授的經歷橫跨學院治理、醫院臨床、專科訓練與補綴教學，特別適合討論「特色課程如何從個別教師創意，轉變為可持續的系所制度」。其管理經驗亦能回應師資、場域、評量與資源配置等教育創新實際會遇到的問題。",
+                feature: "在跨校論壇中可提供南部大型醫學大學與教學醫院的教育治理視角，與其他學校形成對照。特色是兼具教學現場與行政決策經驗，可把課程創新連結到CBME、臨床訓練品質、教師發展及制度化推動。",
+                tags: ["教育論壇", "牙醫教育"]
+            },
+            {
+                id: 26,
+                date: "2026年11月15日",
+                room: "A3 第三會議室",
+                speaker: "胡瓊仁醫師",
+                topic: "贋復設計對植體周圍炎的影響 The Impact of Restorative Designs on Peri-implantitis",
+                background: "參與植牙專業團體並具植體臨床背景，課程主題直接聚焦贋復設計與植體周圍疾病的交互影響。",
+                reason: "植體周圍炎常被簡化為病人清潔或細菌問題，但贋復外形、emergence profile、鄰接面、cement殘留與清潔可及性都可能影響長期組織健康。從贋復設計角度切入，能補足只從牙周治療端處理植體周圍炎的不足。",
+                feature: "預期以病例展示不同贋復輪廓與清潔通道如何影響軟組織、骨高度與發炎控制，並討論 screw-retained／cement-retained 等設計考量。特色是把peri-implantitis的預防前移到贋復設計階段，強化牙周—贋復整合。",
+                tags: ["植體周圍炎", "贋復設計"]
+            },
+            {
+                id: 27,
+                date: "2026年11月15日",
+                room: "A3 第三會議室",
+                speaker: "鄭凱駿醫師",
+                topic: "從數位流程到AI輔助設計的新視界：植牙的牙周補綴考量 The New Era of AI-Assisted Planning in Digital Dentistry: Perio-Prostho Consideration for Implant Emergence Profile",
+                background: "高雄醫學大學附設醫院牙科部贋復補綴牙科主治醫師，並於小港醫院、旗津醫院從事牙科臨床。具高醫補綴科專科訓練，公開資料列臨床專業包括固定、活動、全口義齒、美容與植牙補綴。",
+                reason: "AI輔助設計可以快速產生牙冠外形，但植牙成功的長期關鍵在於emergence profile、軟組織支撐、清潔可及性與贋復空間。鄭醫師的補綴訓練正適合從生物學與贋復角度約束AI設計，避免以視覺美觀取代牙周健康。",
+                feature: "預期可從數位掃描、虛擬設計到最終植體贋復逐步說明，並以牙周—補綴整合的方式評估AI建議。特色是把AI放在臨床原則之下使用：速度可以交給AI，但軟組織生物學、可清潔性與長期維護仍由醫師決策。",
+                tags: ["AI", "牙周補綴"]
+            },
+
+            // 2026年11月15日｜A4 第四會議室
+            {
+                id: 28,
+                date: "2026年11月15日",
+                room: "A4 第四會議室",
+                speaker: "曾偉杰醫師",
+                topic: "【專業品質－兒少課程】看見受傷背後的孩子：兒少不當對待的辨識、通報與跨專業合作",
+                background: "現任臺大醫院小兒心臟科主治醫師、臺大醫學院醫學系小兒科臨床助理教授，並擔任臺大醫院兒少保護醫療中心副召集人。過去長期任職臺大醫院急診醫學部，並曾任臺大兒童醫院兒童急診科主任，具兒童急重症、傷勢評估及兒少保護第一線經驗。",
+                reason: "牙醫師能近距離觀察兒童顏面、口腔、牙齒及頭頸部傷勢，有機會成為最早發現兒少不當對待警訊的醫療人員之一；但如何區分意外與可疑傷害、如何詢問、紀錄與依法通報，需要兼具醫療判斷與兒少保護實務。曾醫師背景正好完整涵蓋這些需求。",
+                feature: "本場可由實際案例帶入，建立「看見異常—形成合理懷疑—安全詢問—客觀紀錄—法定通報—跨專業合作」的完整流程。特色是不把兒少保護只講成法律義務，而是教牙醫師在診間真正看得出來、問得恰當、記得完整並知道下一步如何處理。",
+                tags: ["專業品質", "兒少保護"]
+            },
+            {
+                id: 29,
+                date: "2026年11月15日",
+                room: "A4 第四會議室",
+                speaker: "李怡青教授",
+                topic: "【專業品質－性別】醫療職場中的性別平等：權力、偏見與專業互動",
+                background: "國立臺灣大學心理學系教授，研究領域為人格與社會心理學；臺大公開資料明列研究興趣包括群際關係、性別議題、權力與文化議題。具臺大心理學學士、政治大學心理學碩士及美國康乃狄克州立大學心理學博士學歷。",
+                reason: "醫療職場中的性別問題往往不是明顯惡意，而是透過權力差距、角色期待、語言、升遷機會、工作分配與隱性偏見日常化。李教授的研究正聚焦性別與權力，能解釋「為什麼看似無心的互動仍可能造成不平等」，並把性別教育從法規遵守提升到組織與心理機制。",
+                feature: "預期可結合社會心理學研究與醫療職場情境，分析刻板印象、隱性偏見、權力不對等與旁觀者效應，並提供可實踐的溝通與組織調整原則。特色是不只告訴參與者哪些行為不能做，更協助理解偏見如何形成、如何被制度放大。",
+                tags: ["專業品質", "性別平等"]
+            },
+            {
+                id: 30,
+                date: "2026年11月15日",
+                room: "A4 第四會議室",
+                speaker: "邱宏正醫師",
+                topic: "【專業法規】牙醫常見醫療糾紛與醫事調解實務：從案例看法律責任與風險管理",
+                background: "司法院民事調解委員名冊列其專門學識經驗包括齒顎矯正、人工植牙、臨床牙醫學、一般醫學、醫療糾紛調處與損害賠償專業鑑定；現職為牙醫師，主要經歷亦包括臺大醫院主治醫師。",
+                reason: "牙科醫療爭議通常不是單一「技術成功或失敗」問題，而是治療計畫、告知同意、病歷、費用、期待與後續溝通共同作用。邱醫師不只是懂法律的牙醫師，而是同時具臨床、調解、鑑定與專業團體治理視角，能從第三方角度指出關鍵細節。",
+                feature: "預期以真實或去識別化案例，依序拆解事件起因、病歷證據、告知內容、醫病溝通、責任爭點及調解策略，形成「事前預防—事件應變—調解處理」框架。特色是降低抽象法律距離，讓牙醫師知道如何在日常診療中具體減少法律風險。",
+                tags: ["專業品質=", "醫療糾紛"]
+            },
+            {
+                id: 31,
+                date: "2026年11月15日",
+                room: "A4 第四會議室",
+                speaker: "邱宏正醫師",
+                topic: "【專業倫理】醫療院所的職場倫理與風險治理：醫療暴力、勞資爭議與職場霸凌的因應",
+                background: "調解委員會委員，其擅長醫療管理、法律、勞動關係、職場安全或醫學倫理等相關經歷。",
+                reason: "本題橫跨醫療暴力、勞資關係、職場霸凌與組織治理，需講師同時理解醫療院所運作、法規責任與倫理界線。本次演講將含括醫院或診所管理、爭議處理、勞動法規或職場安全實務，其課程深具實用性及啟發性。",
+                feature: "本次演講將以情境案例與制度設計為主：事件辨識、即時安全處置、通報、紀錄、內部調查、支持機制及預防制度。使與會者可深入了解或應用於日常藉以趨吉避凶。",
+                tags: ["專業品質", "職場倫理"]
+            },
+
+            // 2026年11月15日｜A5 第五會議室
+            {
+                id: 32,
+                date: "2026年11月15日",
+                room: "A5 第五會議室",
+                speaker: "莊宗明醫師",
+                topic: "四十二年 Level Anchorage System 齒顎矯正症例分享討論／Back to the Future：透明牙套矯正之今昔／AI or BI：人工智慧於牙科門診之應用，著重齒列矯正／現場Q&A及示範",
+                background: "長期投入齒顎矯正臨床與Level Anchorage System（LAS）相關教學與病例應用，課程安排以「四十二年」臨床經驗為主軸，並延伸至透明牙套與AI，顯示其講授特色在於以長期矯正經驗對照新技術演進。",
+                reason: "透明牙套與AI容易讓臨床者把軟體建議誤認為生物力學本身，但長期病例經驗能提供最重要的校準。由熟悉LAS與傳統支抗控制的講師回顧數十年病例，再評論透明牙套與AI，可讓聽眾看清「工具改變」與「矯正基本原理」之間的關係。",
+                feature: "四段式課程具有很強的縱向比較特色：從長期固定矯正病例、透明牙套演變、AI臨床應用到現場Q&A與示範。預期能把歷史經驗與新科技直接放在同一評估框架，特別適合建立年輕醫師的生物力學判斷力。",
+                tags: ["AI", "齒顎矯正", "透明牙套"]
+            },
+            {
+                id: 33,
+                date: "2026年11月15日",
+                room: "A5 第五會議室",
+                speaker: "陳欽章醫師／陳世杰教授／李宇倢博士 (聯合場)",
+                topic: "AI 如何翻轉牙科病歷系統／口腔癌AI快篩／iDental智慧AI牙科（聯合場）",
+                background: "跨領域團隊聯合呈現：陳欽章醫師聚焦牙科門診流程與病歷系統導入；陳世杰教授為臺大醫學系放射線科教授，互動式口腔癌AI影像辨識發明人；李宇倢博士為慧術科技代表人，代表醫療科技產業端。",
+                reason: "牙科AI若無法整合既有病歷、影像與行政流程，很難真正改變臨床效率。本聯合場結合臨床醫師、研發學者與產業落地端，能完整說明從研發、試驗到院所系統說服導入的全過程。",
+                feature: "與影像AI及產業端講者同台，可形成「病歷資料—AI辨識—臨床整合」的連續鏈結。特色在於把AI從單一模型延伸到practice management，討論資料如何被結構化、如何減少重複輸入。",
+                tags: ["AI", "口腔癌快篩", "智慧牙科"]
+            },
+            {
+                id: 34,
+                date: "2026年11月15日",
+                room: "A5 第五會議室",
+                speaker: "林葳醫師",
+                topic: "BBA新手入門 BBA 101: THE BIOLOGY FIRST APPROACH",
+                background: "參與台灣植牙聯盟醫學會理事工作，並以骨增量／BBA相關臨床教學為本次主題。BBA課程定位為新手入門，講師角色重點在於把骨增量的生物學與操作步驟轉譯成可學習的臨床流程。",
+                reason: "骨增量學習最常見的問題是過度聚焦材料名稱或單一步驟，而忽略血液供應、骨片穩定、軟組織關閉與受區生物學。以「Biology First」為核心的課程適合由實際操作者拆解每一步背後的生物學理由，對初學者更具安全性。",
+                feature: "預期由病例選擇、術前評估、骨塊／骨片處理、固定、軟組織關閉，到術後追蹤逐步說明，並特別強調新手常見錯誤與併發症的預防。特色是以原理引領技術突破，而達到臨床的高預期性。",
+                tags: ["骨增量", "BBA"]
+            },
+
+            // 2026年11月15日｜Room 201｜International Keynotes
+            {
+                id: 35,
+                date: "2026年11月15日",
+                room: "Room 201",
+                speaker: "Prof. Masao Ozaki 尾崎正雄教授",
+                topic: "Development of Pediatric Patient Robots and Emergency Response Training 兒童患者機器人的開發與緊急應變實習",
+                background: "福岡齒科大學成育小兒歯科學領域教授／主任教授之公開資料可查，長期從事小兒牙科教育與臨床。其教學內容涵蓋兒童心身發育、行為管理與治療方針，與以兒童患者機器人進行情境模擬的主題高度契合。",
+                reason: "傳統牙科模型可訓練器械操作，卻難以呈現兒童突然移動、哭鬧、拒絕治療、生命徵象變化或急症事件。由小兒牙科教育專家發展患者機器人，可把技能訓練提升到情境判斷、團隊溝通與危機處理。",
+                feature: "演講預期結合患者機器人開發理念、教學場景設計與緊急應變實習，讓參與者看到simulation如何從「模型」進化為「會反應的病人」。特色在於可同時訓練技術與非技術能力。",
+                tags: ["AI", "Keynote", "International", "兒童牙科", "醫療機器人"]
+            },
+            {
+                id: 36,
+                date: "2026年11月15日",
+                room: "Room 201",
+                speaker: "Prof. Ching-Chang Ko, DDS, PhD",
+                topic: "Artificial Intelligence in Dentistry 人工智慧在牙科的應用與發展",
+                background: "The Ohio State University College of Dentistry Orthodontics 教授暨Division Chair，校方資料列其為Professor and Chair, Division of Orthodontics，研究興趣亦跨及骨生物學、再生材料及計算／資料科學相關領域。",
+                reason: "大會AI keynote需要提供跨專科框架，而非只介紹單一產品。Prof. Ko兼具齒顎矯正、工程／生物材料及研究背景，可從資料、演算法、臨床決策與研究驗證的層次，說明AI在牙科不同場景的成熟度與限制。",
+                feature: "預期可將AI應用分層整理為影像辨識、預測、治療規劃、生成式AI與教育等面向，並強調資料品質與外部驗證。特色是能把技術熱潮轉化為學術與臨床可判斷的架構。",
+                tags: ["Keynote", "International", "Keynote", "AI"]
+            },
+            {
+                id: 37,
+                date: "2026年11月15日",
+                room: "Room 201",
+                speaker: "Dr. Gordon Lai, DDS, MSD",
+                topic: "Beyond the Files: Embracing the Digital Evolution in Endodontic Practice",
+                background: "University of the Pacific Arthur A. Dugoni School of Dentistry Clinical Assistant Professor，完成該校Endodontology專科訓練及MSD。研究興趣包括將3D printing、VR與AR導入臨床及牙醫教育。",
+                reason: "現代牙髓病學的數位化已超越器械與file system，延伸至CBCT、導引根管、3D列印、VR/AR、數位模擬與AI。Dr. Lai同時具牙髓專科臨床與數位教育創新經驗，能把各項工具串成一套符合臨床需求的modern endodontic workflow。",
+                feature: "演講特色預期是「Beyond the Files」的整合觀點：從診斷、病例選擇、治療規劃到教育訓練，說明不同數位工具各自最適位置。能同時兼顧臨床與教育兩條應用路徑。",
+                tags: ["AI", "Keynote", "International", "牙髓病學", "數位牙科"]
+            }
+        ];
+
+        // Global DOM elements
+        const courseGrid = document.getElementById('courseGrid');
+        const emptyState = document.getElementById('emptyState');
+        const searchInput = document.getElementById('searchInput');
+        const filterDate = document.getElementById('filterDate');
+        const filterRoom = document.getElementById('filterRoom');
+        const filterTag = document.getElementById('filterTag');
+        const filterSpeaker = document.getElementById('filterSpeaker');
+        const statCount = document.getElementById('stat-count');
+        const statSpeakers = document.getElementById('stat-speakers');
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            populateSpeakerDropdown();
+            applyFilters();
+        });
+
+        // Populate Speaker Dropdown
+        function populateSpeakerDropdown() {
+            const speakers = [...new Set(coursesData.map(c => c.speaker))].sort();
+            speakers.forEach(spk => {
+                const opt = document.createElement('option');
+                opt.value = spk;
+                opt.textContent = spk;
+                filterSpeaker.appendChild(opt);
+            });
+        }
+
+        // Render Cards
+        function renderCourses(items) {
+            courseGrid.innerHTML = '';
+
+            if (items.length === 0) {
+                emptyState.classList.remove('hidden');
+                statCount.textContent = '0';
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            statCount.textContent = items.length;
+
+            const uniqueSpeakersInFiltered = new Set(items.map(i => i.speaker));
+            statSpeakers.textContent = uniqueSpeakersInFiltered.size;
+
+            items.forEach(item => {
+                const isKeynote = item.tags.includes('Keynote') || item.room.includes('Keynote') || item.topic.includes('Keynote');
+                const isAI = item.tags.includes('AI') || item.topic.includes('AI') || item.topic.includes('人工智能');
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col overflow-hidden group hover:border-brand-300";
+
+                card.innerHTML = `
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <!-- Header Tags -->
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="bg-brand-50 text-brand-700 text-xs px-2.5 py-1 rounded-md font-medium border border-brand-100/80">
+                                        <i class="fa-regular fa-calendar me-1"></i>${item.date.replace('2026年', '')}
+                                    </span>
+                                    <span class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-md font-medium">
+                                        <i class="fa-solid fa-location-dot me-1 text-slate-400"></i>${item.room}
+                                    </span>
+                                </div>
+                                ${isKeynote ? '<span class="bg-amber-100 text-amber-800 font-semibold text-[10px] px-2 py-0.5 rounded border border-amber-200"><i class="fa-solid fa-crown me-1"></i>Keynote</span>' : ''}
+                                ${isAI ? '<span class="bg-sky-100 text-sky-800 font-semibold text-[10px] px-2 py-0.5 rounded border border-sky-200"><i class="fa-solid fa-robot me-1"></i>AI</span>' : ''}
+                            </div>
+
+                            <!-- Speaker Name -->
+                            <div class="text-sm font-bold text-brand-600 mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-user-doctor text-xs"></i>
+                                <span>${item.speaker}</span>
+                            </div>
+
+                            <!-- Topic Title -->
+                            <h3 class="text-base font-bold text-slate-900 group-hover:text-brand-600 transition-colors line-clamp-2 leading-snug mb-3" title="${item.topic}">
+                                ${item.topic}
+                            </h3>
+
+                            <!-- Preview Text (Background) -->
+                            <p class="text-xs text-slate-600 line-clamp-3 mb-4 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                <strong class="text-slate-700">背景:</strong> ${item.background}
+                            </p>
+                        </div>
+
+                        <!-- Card Action Footer -->
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                            <button onclick="openModal(${item.id})" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg transition">
+                                <span>閱讀完整推薦詳情</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+
+                            <button onclick="copySingleCourse(${item.id})" title="複製此單篇資訊" class="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition">
+                                <i class="fa-regular fa-copy text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                courseGrid.appendChild(card);
+            });
+        }
+
+        // Filter Logic
+        function applyFilters() {
+            const searchVal = searchInput.value.toLowerCase().trim();
+            const dateVal = filterDate.value;
+            const roomVal = filterRoom.value;
+            const tagVal = filterTag.value;
+            const speakerVal = filterSpeaker.value;
+
+            const filtered = coursesData.filter(item => {
+                // Search match
+                const matchSearch = !searchVal || 
+                    item.speaker.toLowerCase().includes(searchVal) ||
+                    item.topic.toLowerCase().includes(searchVal) ||
+                    item.background.toLowerCase().includes(searchVal) ||
+                    item.reason.toLowerCase().includes(searchVal) ||
+                    item.feature.toLowerCase().includes(searchVal) ||
+                    item.room.toLowerCase().includes(searchVal);
+
+                // Date match
+                const matchDate = !dateVal || item.date === dateVal;
+
+                // Room match
+                const matchRoom = !roomVal || item.room.includes(roomVal);
+
+                // Tag match
+                const matchTag = !tagVal || (
+                    (tagVal === 'Keynote' && (item.tags.includes('Keynote') || item.room.includes('Keynote') || item.topic.includes('Keynote'))) ||
+                    (tagVal === 'AI' && (item.tags.includes('AI') || item.topic.includes('AI') || item.topic.includes('人工智能'))) ||
+                    (tagVal === '專業品質／法規／伦理' && item.room.includes('專業品質')) ||
+                    (tagVal === 'International' && (item.room.includes('201') || item.tags.includes('International'))) ||
+                    (tagVal === '教育論壇' && item.topic.includes('教育'))
+                );
+
+                // Speaker match
+                const matchSpeaker = !speakerVal || item.speaker === speakerVal;
+
+                return matchSearch && matchDate && matchRoom && matchTag && matchSpeaker;
+            });
+
+            renderCourses(filtered);
+        }
+
+        // Reset Filter
+        function resetFilters() {
+            searchInput.value = '';
+            filterDate.value = '';
+            filterRoom.value = '';
+            filterTag.value = '';
+            filterSpeaker.value = '';
+            applyFilters();
+        }
+
+        // Open Modal Details
+        function openModal(id) {
+            const item = coursesData.find(c => c.id === id);
+            if (!item) return;
+
+            document.getElementById('modalDateTag').textContent = item.date;
+            document.getElementById('modalRoomTag').textContent = item.room;
+            document.getElementById('modalSpeaker').textContent = item.speaker;
+            document.getElementById('modalTopic').textContent = item.topic;
+            document.getElementById('modalBackground').textContent = item.background;
+            document.getElementById('modalReason').textContent = item.reason;
+            document.getElementById('modalFeature').textContent = item.feature;
+
+            const copyBtn = document.getElementById('modalCopyBtn');
+            copyBtn.onclick = () => copySingleCourse(item.id);
+
+            document.getElementById('detailModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Copy Single Course Info
+        function copySingleCourse(id) {
+            const item = coursesData.find(c => c.id === id);
+            if (!item) return;
+
+            const textToCopy = `【${item.date}｜${item.room}】\n講師：${item.speaker}\n講題：${item.topic}\n\n專業背景：\n${item.background}\n\n推薦理由：\n${item.reason}\n\n預期演講特色：\n${item.feature}`;
+
+            copyToClipboard(textToCopy, `已複製 ${item.speaker} 的課程推薦資訊！`);
+        }
+
+        // Copy Entire Web Code (Full HTML String)
+        function copyFullHtml() {
+            const fullCode = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            copyToClipboard(fullCode, "已將完整網頁 HTML 程式碼複製至剪貼簿！可以貼上至您的網站使用。");
+        }
+
+        // Universal Clipboard Helper
+        function copyToClipboard(text, successMsg) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(successMsg);
+                }).catch(() => {
+                    fallbackCopy(text, successMsg);
+                });
+            } else {
+                fallbackCopy(text, successMsg);
+            }
+        }
+
+        function fallbackCopy(text, successMsg) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg);
+            } catch (err) {
+                showToast("複製失敗，請手動全選複製");
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.textContent = msg;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Close modal on click outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
