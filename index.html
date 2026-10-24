@@ -3128,7 +3128,8 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
                 const matchTag = !tagVal || (
                     (tagVal === 'Keynote' && (item.tags.includes('Keynote') || item.room.includes('Keynote') || item.topic.includes('Keynote'))) ||
                     (tagVal === 'AI' && (item.tags.includes('AI') || item.topic.includes('AI') || item.topic.includes('人工智能'))) ||
-                    (tagVal === '專業品質／法規／伦理' && item.room.includes('專業品質')) ||
+                    (tagVal === '專業品質／法規／倫理' && item.room.includes('專業品質')) || item.tags.includes('專業品質'))) || item.topic.includes('專業品質'))) ||
+                    (tagVal === '學術菁英' && (item.room.includes('學術菁英') || item.tags.includes('學術菁英'))) || item.topic.includes('學術菁英'))) ||
                     (tagVal === 'International' && (item.room.includes('201') || item.tags.includes('International'))) ||
                     (tagVal === '教育論壇' && item.topic.includes('教育'))
                 );
